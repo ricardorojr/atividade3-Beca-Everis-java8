@@ -1,14 +1,11 @@
 package atividade3.pages;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import atividade3.uimaps.FormularioMap;
@@ -28,7 +25,7 @@ public class FormularioPage {
 		formularioMap.btnBuscar.click(driver);
 		formularioMap.linkProduto.click(driver);
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(4000);
 			formularioMap.preencheCep.sendKeys(driver, "38413108");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -39,18 +36,24 @@ public class FormularioPage {
 		formularioMap.frete3.getValue();
 	}
 
-	public void validarMensagemSucesso() {
-		List<String> ls = Arrays.asList("R$ 23,39", "R$ 40,97", "R$ 51,79" );
-		List<String> resultado = Arrays.asList("");
+	public void validarMensagemSucesso() {//"R$ 51,79""R$ 40,97""R$ 23,39"
+		ArrayList valores = new ArrayList(); 
+		valores.add("R$ 51,79");
+		valores.add("R$ 40,97");
+		valores.add("R$ 23,39");
+		ArrayList lista = new ArrayList();
+		
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete1.getValue())));
-			resultado.add(driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText());
+			lista.add(driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText());
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete2.getValue())));
-			resultado.add(driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText());
+			lista.add(driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText());
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete3.getValue())));
-			resultado.add(driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText());
-			Assert.assertEquals(ls, resultado);
+			lista.add(driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText());
+			System.out.println(lista);
+			valores.equals(lista);
+			
 			System.out.println("Sucesso");
 		} catch (Exception e) {
 			System.out.println("Falha");
