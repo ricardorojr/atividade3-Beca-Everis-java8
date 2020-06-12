@@ -48,6 +48,7 @@ public class Element {
 	}
 
 	public void sendKeys(WebDriver driver, String string) {
+		criarElemento(driver).clear();
 		criarElemento(driver).sendKeys(string);
 	}
 

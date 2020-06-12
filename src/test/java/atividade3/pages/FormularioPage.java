@@ -30,10 +30,10 @@ public class FormularioPage {
 		// clica link do produto
 		formularioMap.linkProduto.click(driver);
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 
-			// preenche o cep
-			formularioMap.preencheCep.sendKeys(driver, "38413108");
+		// preenche o cep
+		formularioMap.preencheCep.sendKeys(driver, "38413-108");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

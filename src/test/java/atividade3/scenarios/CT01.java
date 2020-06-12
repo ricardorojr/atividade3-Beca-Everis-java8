@@ -23,7 +23,7 @@ public class CT01 {
 		formularioPage = new FormularioPage(driver);
 	}
 	
-	//executa
+	//executa o teste
 	@Test
 	public void test() {
 		formularioPage.preencherFormulario();
