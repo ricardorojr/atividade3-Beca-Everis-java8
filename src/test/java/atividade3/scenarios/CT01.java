@@ -14,6 +14,7 @@ public class CT01 {
 	InicioPage inicioPage;
 	FormularioPage formularioPage;
 	
+	//componentes antes da execucao
 	@Before
 	public void before() {
 		driver = new Driver().getDriver();
@@ -22,6 +23,7 @@ public class CT01 {
 		formularioPage = new FormularioPage(driver);
 	}
 	
+	//executa
 	@Test
 	public void test() {
 		formularioPage.preencherFormulario();
@@ -32,7 +34,7 @@ public class CT01 {
 			e.printStackTrace();
 		}
 	}
-	
+	//fecha a execucao
 	@After	
 	public void after() {
 		Driver.close(driver);
