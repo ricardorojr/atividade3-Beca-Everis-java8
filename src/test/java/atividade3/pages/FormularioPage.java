@@ -1,9 +1,14 @@
 package atividade3.pages;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import atividade3.uimaps.FormularioMap;
@@ -22,7 +27,12 @@ public class FormularioPage {
 		formularioMap.preenchebusca.sendKeys(driver, "Capa Targus Ipad Mini Rotating Versavu THZ668 Grafite ");
 		formularioMap.btnBuscar.click(driver);
 		formularioMap.linkProduto.click(driver);
-		formularioMap.preencheCep.sendKeys(driver, "38413-108");
+		try {
+			Thread.sleep(3000);
+			formularioMap.preencheCep.sendKeys(driver, "38413108");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		formularioMap.btnFrete.click(driver);
 		formularioMap.frete1.getValue();
 		formularioMap.frete2.getValue();
@@ -30,23 +40,17 @@ public class FormularioPage {
 	}
 
 	public void validarMensagemSucesso() {
+		List<String> ls = Arrays.asList("R$ 23,39", "R$ 40,97", "R$ 51,79" );
+		List<String> resultado = Arrays.asList("");
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete1.getValue())));
-			String frete1 = driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText();
-			System.out.println(frete1);
-			Assert.assertEquals("Erro ao ao validar botao da mensagem de sucesso!", "R$ 23,39", frete1);
-
+			resultado.add(driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText());
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete2.getValue())));
-			String frete2 = driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText();
-			System.out.println(frete2);
-			Assert.assertEquals("Erro ao ao validar botao da mensagem de sucesso!", "R$ 40,97", frete2);
-
+			resultado.add(driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText());
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete3.getValue())));
-			String frete3 = driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText();
-			System.out.println(frete3);
-			Assert.assertEquals("Erro ao ao validar botao da mensagem de sucesso!", "R$ 51,79", frete3);
-
+			resultado.add(driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText());
+			Assert.assertEquals(ls, resultado);
 			System.out.println("Sucesso");
 		} catch (Exception e) {
 			System.out.println("Falha");
