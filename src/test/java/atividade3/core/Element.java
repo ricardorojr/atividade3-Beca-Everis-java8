@@ -20,7 +20,8 @@ public class Element {
 		this.byvalue = byvalue;
 		this.value = value;
 	}
-
+	
+	//pega valores por XPATH, ID, CLASS_NAME
 	public WebElement criarElemento(WebDriver driver) {
 		try {
 			Thread.sleep(1000);
