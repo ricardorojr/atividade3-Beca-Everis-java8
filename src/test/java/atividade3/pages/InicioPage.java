@@ -13,7 +13,5 @@ public class InicioPage {
 
 	InicioMap inicioMap = new InicioMap(driver);
 	
-	public void selecionarTipoFormulario() {
-		
-	}
+	
 }

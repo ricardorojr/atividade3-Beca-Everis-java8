@@ -2,7 +2,6 @@ package atividade3.pages;
 
 import java.util.ArrayList;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,15 +39,13 @@ public class FormularioPage {
 
 		// clica no botao frete
 		formularioMap.btnFrete.click(driver);
-
-		// pega o valor do primeiro frete
-		formularioMap.frete1.getValue();
-
-		// pega o valor do segundo frete
-		formularioMap.frete2.getValue();
-
-		// pega o valor do terceiro frete
-		formularioMap.frete3.getValue();
+		
+		//pega valor do frete
+		formularioMap.frete("20,70");
+		formularioMap.frete("21,91");
+		formularioMap.frete("39,43");
+		
+		
 	}
 
 	// compara os valores da lista de exercicio com os valores do frete da pagina
@@ -61,13 +58,15 @@ public class FormularioPage {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete1.getValue())));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("20,70").getValue())));
 			lista.add(driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText());
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete2.getValue())));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("21,91").getValue())));
 			lista.add(driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText());
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete3.getValue())));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("39,43").getValue())));
 			lista.add(driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText());
-			System.out.println(lista);
+			for (int i = 0; i<lista.size(); i++) {
+			System.out.println(lista.get(i));
+			}
 			valores.equals(lista);
 
 			System.out.println("Sucesso");

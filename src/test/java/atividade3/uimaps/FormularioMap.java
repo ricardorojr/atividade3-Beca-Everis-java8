@@ -28,6 +28,10 @@ public class FormularioMap {
 	//mapeia o botao do frete
 	public Element btnFrete = new Element(driver, ByValue.XPATH, "//input[@class='button-calcula-cep']");
 	
+	public Element frete(String valorFrete) {
+		return new Element(driver, ByValue.XPATH, "//*[contains(text(), '"+valorFrete+"')]");
+	}
+	
 	//mapeia a primeira opcao de frete
 	public Element frete1 = new Element(driver, ByValue.XPATH, "//td[text()='até 11 dias úteis']//following-sibling::td");
 	
