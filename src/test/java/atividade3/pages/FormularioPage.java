@@ -21,7 +21,7 @@ public class FormularioPage {
 	public void preencherFormulario() {
 
 		// preenche para buscar o produto
-		formularioMap.preenchebusca.sendKeys(driver, "Capa Targus Ipad Mini Rotating Versavu THZ668 Grafite ");
+		formularioMap.preenchebusca.sendKeys(driver, "Capa Targus Ipad Mini Rotating Versavu THZ668 Grafite");
 
 		// clica no botao buscar
 		formularioMap.btnBuscar.click(driver);
@@ -41,9 +41,9 @@ public class FormularioPage {
 		formularioMap.btnFrete.click(driver);
 		
 		//pega valor do frete
-		formularioMap.frete("20,70");
-		formularioMap.frete("21,91");
-		formularioMap.frete("39,43");
+		formularioMap.frete("23,17");
+		formularioMap.frete("40,75");
+		formularioMap.frete("51,67");
 		
 		
 	}
@@ -51,19 +51,19 @@ public class FormularioPage {
 	// compara os valores da lista de exercicio com os valores do frete da pagina
 	public void validarMensagemSucesso() {
 		ArrayList valores = new ArrayList();
-		valores.add("R$ 51,79");
-		valores.add("R$ 40,97");
-		valores.add("R$ 23,39");
+		valores.add("R$ 23,17");
+		valores.add("R$ 40,75");
+		valores.add("R$ 51,67");
 		ArrayList lista = new ArrayList();
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("20,70").getValue())));
-			lista.add(driver.findElement(By.xpath(formularioMap.frete1.getValue())).getText());
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("21,91").getValue())));
-			lista.add(driver.findElement(By.xpath(formularioMap.frete2.getValue())).getText());
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("39,43").getValue())));
-			lista.add(driver.findElement(By.xpath(formularioMap.frete3.getValue())).getText());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("23,17").getValue())));
+			lista.add(driver.findElement(By.xpath(formularioMap.frete("23,17").getValue())).getText());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("40,75").getValue())));
+			lista.add(driver.findElement(By.xpath(formularioMap.frete("40,75").getValue())).getText());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formularioMap.frete("51,67").getValue())));
+			lista.add(driver.findElement(By.xpath(formularioMap.frete("51,67").getValue())).getText());
 			for (int i = 0; i<lista.size(); i++) {
 			System.out.println(lista.get(i));
 			}
